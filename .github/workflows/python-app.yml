@@ -35,9 +35,10 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-    - name: Set PYTHONPATH
+    - name: Create and Activate Virtual Environment
       run: |
-        echo "PYTHONPATH=${GITHUB_WORKSPACE}" >> $GITHUB_ENV
+        python -m venv venv
+        source venv/bin/activate
         
     - name: Test with Django test
       run: |
